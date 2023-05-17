@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exchange Rate List</title>
+</head>
+<body>
+<nav>
+    <div>
+        <div>
+            <ul>
+                <li>
+                    <a th:href="@{/}">Список обмена валют</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/schedule}">Изменить Cron</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1>Exchange Rate List</h1>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>id</th>
+        <th>Currency List</th>
+        <th>Exchange Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rate : ${exchangeRates}">
+        <td th:text="${rate.id}"/>
+        <td>
+            <div th:each="currency : ${rate.currencies}">
+                <span th:text="${currency.code}"> code </span>
+                <span th:text="${currency.exchangerName}"> exchangerName </span>
+                <span th:text="${currency.exchangeRateValue}"> exchangerName </span>
+            </div>
+        </td>
+        <td th:text="${rate.dateTime}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

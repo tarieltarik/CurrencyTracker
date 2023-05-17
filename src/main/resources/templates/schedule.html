@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Menu</title>
+</head>
+<body>
+<nav>
+    <div>
+        <div>
+            <ul>
+                <li>
+                    <a th:href="@{/}">Список обмена валют</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/schedule}">Изменить Cron</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1>Cron change page</h1>
+
+<form th:action="@{/cron/save}"
+      th:object="${cron}" method="POST" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}">
+    <label for="hour">Hour</label>
+    <input type="text" th:field="*{hour}" id="hour" name="hour">
+    <label for="min">Minute</label>
+    <input type="text" th:field="*{min}" id="min" name="min">
+    <label for="second">Second</label>
+    <input type="text" th:field="*{second}" id="second" name="second">
+    <button type="submit">Сохранить</button>
+</form>
+
+</body>
+</html>
